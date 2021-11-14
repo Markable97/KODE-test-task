@@ -16,7 +16,7 @@ data class User(
     val birthday: String = "default",
     val phone: String = "default",
     //Переменные не участвуюшие в парсинге
-    var typeView: Int = 0, //Для отображения в recycler 0 - обычный вид, 1 - с датой
+    var typeView: Int = 0, //Для отображения в recycler 0 - обычный вид, 1 - с датой внизу,  с датой сверху
     var dopBirthday: String = "default",
     var lineYear: String = "default",
 ):Parcelable

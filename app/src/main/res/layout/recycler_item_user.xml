@@ -13,7 +13,7 @@
         android:layout_marginBottom="6dp"
         android:background="@drawable/round_image"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/user_line_year_lay" />
+        app:layout_constraintTop_toBottomOf="@+id/user_line_year_lay_upper" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
@@ -24,7 +24,7 @@
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/user_avatar"
-        app:layout_constraintTop_toBottomOf="@+id/user_line_year_lay">
+        app:layout_constraintTop_toBottomOf="@+id/user_line_year_lay_upper">
 
         <TextView
             android:id="@+id/user_name"
@@ -81,7 +81,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/user_line_year_lay"
+        android:id="@+id/user_line_year_lay_upper"
         android:layout_width="match_parent"
         android:layout_height="68dp"
         android:orientation="horizontal"
@@ -117,6 +117,53 @@
 
         <View
             android:id="@+id/line_right"
+            android:layout_width="72dp"
+            android:layout_height="1dp"
+            android:background="#C3C3C6"
+            android:layout_marginEnd="24dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_gravity="center_vertical"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/user_line_year_lay_down"
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        tools:visibility="visible"
+        app:layout_constraintTop_toBottomOf="@id/user_avatar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        >
+        <View
+            android:id="@+id/line_left_down"
+            android:layout_width="72dp"
+            android:layout_height="1dp"
+            android:background="#C3C3C6"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="24dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/user_line_year_text_down"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:textColor="@color/line_year_text"
+            android:textSize="15sp"
+            tools:text = '2022'
+            app:layout_constraintEnd_toStartOf="@+id/line_right_down"
+            app:layout_constraintStart_toEndOf="@+id/line_left_down"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <View
+            android:id="@+id/line_right_down"
             android:layout_width="72dp"
             android:layout_height="1dp"
             android:background="#C3C3C6"

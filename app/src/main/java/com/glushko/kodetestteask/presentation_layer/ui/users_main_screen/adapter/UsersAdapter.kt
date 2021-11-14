@@ -1,6 +1,5 @@
 package com.glushko.kodetestteask.presentation_layer.ui.users_main_screen.adapter
 
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -73,9 +72,10 @@ class UsersAdapter(private var list: MutableList<User> = mutableListOf(), val ca
         private val userTag: TextView = itemView.findViewById(R.id.user_tag)
         private val userDepartment: TextView = itemView.findViewById(R.id.user_department)
         private val birthday: TextView = itemView.findViewById(R.id.user_birthday)
-        private val lineYearLayout: ConstraintLayout = itemView.findViewById(R.id.user_line_year_lay)
+        private val lineYearLayout: ConstraintLayout = itemView.findViewById(R.id.user_line_year_lay_upper)
         private val lineYearText: TextView = itemView.findViewById(R.id.user_line_year_text)
-
+        private val lineYearLayoutDown: ConstraintLayout = itemView.findViewById(R.id.user_line_year_lay_down)
+        private val lineYearTextDown: TextView = itemView.findViewById(R.id.user_line_year_text_down)
         override fun onBind(user: User) {
             Glide.with(itemView.context).load(user.avatarUrl).circleCrop().into(avatar)
             userName.text = "${user.firstName} ${user.lastName}"
@@ -93,11 +93,22 @@ class UsersAdapter(private var list: MutableList<User> = mutableListOf(), val ca
                     "d MMMM",
                     Locale.getDefault()
                 ).format(SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse(user.birthday)).toString()
-                if (user.lineYear!="default"){
-                    lineYearLayout.visibility = View.VISIBLE
-                    lineYearText.text = user.lineYear
+                if(user.typeView == 1){
+                    lineYearLayoutDown.visibility = View.GONE
+                    if (user.lineYear!="default"){
+                        lineYearLayout.visibility = View.VISIBLE
+                        lineYearText.text = user.lineYear
+                    }else{
+                        lineYearLayout.visibility = View.GONE
+                    }
                 }else{
                     lineYearLayout.visibility = View.GONE
+                    if (user.lineYear!="default"){
+                        lineYearLayoutDown.visibility = View.VISIBLE
+                        lineYearTextDown.text = user.lineYear
+                    }else{
+                        lineYearLayoutDown.visibility = View.GONE
+                    }
                 }
             }
         }

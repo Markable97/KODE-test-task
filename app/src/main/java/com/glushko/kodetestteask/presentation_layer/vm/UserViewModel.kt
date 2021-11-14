@@ -36,7 +36,7 @@ class UserViewModel(application: Application): AndroidViewModel(application) {
         myCompositeDisposable?.addAll(
             useCaseRepository.getUsers()
                 .flatMap { response ->
-                    useCaseRepository.sortUser(response.items.toMutableList(), typeSort)
+                    useCaseRepository.sortUser(response.items.toMutableList(), typeSort, TYPE_FIND_TAB)
                 }
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())

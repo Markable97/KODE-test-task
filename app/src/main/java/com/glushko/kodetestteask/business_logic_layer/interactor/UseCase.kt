@@ -29,9 +29,9 @@ class UseCase() {
         val usersReturn = when (typeFind) {
             UserViewModel.TYPE_FIND_TAB -> {
                 if(department.isNotEmpty()){
-                    sortUserDop(users.filter { it.department == text }.toMutableList(), typeSort)
+                    sortUserDop(users.filter { it.department == text }.toMutableList(), typeSort, typeFind)
                 }else{
-                    sortUserDop(users.toMutableList(), typeSort)
+                    sortUserDop(users.toMutableList(), typeSort, typeFind)
                 }
             }
             UserViewModel.TYPE_FIND_USER -> {
@@ -39,12 +39,12 @@ class UseCase() {
                     sortUserDop(users.filter {
                         it.firstName.contains(text, true) || it.lastName.contains(text, true)
                                 || it.userTag.contains(text, true)
-                    }.toMutableList(), typeSort)
+                    }.toMutableList(), typeSort, typeFind)
                 }else{
                     sortUserDop(users.filter {
                         (it.firstName.contains(text, true) || it.lastName.contains(text, true)
                                 || it.userTag.contains(text, true)) && it.department == department
-                    }.toMutableList(), typeSort)
+                    }.toMutableList(), typeSort, typeFind)
                 }
             }
             else -> users
@@ -53,7 +53,7 @@ class UseCase() {
     }
 
     @SuppressLint("CheckResult")
-    fun sortUser(users: MutableList<User>, typeSort: Int): Observable<List<User>> {
+    fun sortUser(users: MutableList<User>, typeSort: Int, typeFind: Int): Observable<List<User>> {
         val usersReturn = when (typeSort) {
             UserViewModel.TYPE_SORT_ALPHABET -> prepareList(users, typeSort).sortedWith(compareBy { it.firstName })
             UserViewModel.TYPE_SORT_BIRTHDAY -> setLineYear(prepareList(users, typeSort).sortedWith(compareBy {
@@ -65,15 +65,15 @@ class UseCase() {
                 } else {
                     SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse(it.dopBirthday)
                 }
-            }).toMutableList(), typeSort)
+            }).toMutableList(), typeSort, typeFind)
             else -> users
         }
         return Observable.fromArray(usersReturn)
     }
-    private fun sortUserDop(users: MutableList<User>, typeSort: Int): List<User> {
+    private fun sortUserDop(users: MutableList<User>, typeSort: Int, typeFind: Int): List<User> {
         if (users.isNotEmpty()){
             val usersReturn = when (typeSort) {
-                UserViewModel.TYPE_SORT_ALPHABET -> setLineYear(prepareList(users, typeSort).sortedWith(compareBy { it.firstName }).toMutableList(), typeSort)
+                UserViewModel.TYPE_SORT_ALPHABET -> setLineYear(prepareList(users, typeSort).sortedWith(compareBy { it.firstName }).toMutableList(), typeSort, typeFind)
                 UserViewModel.TYPE_SORT_BIRTHDAY -> setLineYear(prepareList(users, typeSort).sortedWith(compareBy {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                         LocalDate.parse(
@@ -83,7 +83,7 @@ class UseCase() {
                     } else {
                         SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse(it.dopBirthday)
                     }
-                }).toMutableList(), typeSort)
+                }).toMutableList(), typeSort, typeFind)
                 else -> users
             }
             return usersReturn
@@ -92,7 +92,7 @@ class UseCase() {
         }
     }
 
-    private fun setLineYear(users: MutableList<User>, typeSort: Int): List<User>{
+    private fun setLineYear(users: MutableList<User>, typeSort: Int, typeSearch: Int): List<User>{
         val endYear = dateFormat.parse("${dateFormatYear.format(current)}-12-31")
         val minDateAll =  endYear.time - dateFormat.parse(users.first().dopBirthday).time
         var indexAt = 0
@@ -110,7 +110,7 @@ class UseCase() {
                 }
             }
         }
-        if(typeSort == UserViewModel.TYPE_SORT_BIRTHDAY && users.isNotEmpty()){
+        if(typeSearch == UserViewModel.TYPE_FIND_TAB && users.isNotEmpty()){
             if(indexAt == 0){
                 if(minDateAll < 0){
                     users[indexAt].lineYear = "${dateFormatYear.format(current).toInt() + 1}"
@@ -119,6 +119,17 @@ class UseCase() {
                 }
             }else{
                 users[indexAt+1].lineYear = "${dateFormatYear.format(current).toInt() + 1}"
+            }
+        }else if(typeSearch == UserViewModel.TYPE_FIND_USER && users.isNotEmpty()){
+            users[indexAt].lineYear = "${dateFormatYear.format(current).toInt() + 1}"
+            if (indexAt == 0){
+                if(minDateAll < 0){
+                    users[indexAt].typeView = 1
+                }else{
+                    users[indexAt].typeView = 2
+                }
+            }else{
+                users[indexAt].typeView = 2
             }
         }
         return users.toList()
