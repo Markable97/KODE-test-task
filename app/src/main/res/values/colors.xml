@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="color_toolbar">#F7F7F8</color>
+
+    <color name="color_user_name">#050510</color>
+    <color name="color_user_tag">#97979B</color>
+    <color name="color_user_department">#55555C</color>
+    <color name="color_user_age">#97979B</color>
+    <color name="color_tittle_err_up">#050510</color>
+    <color name="color_tittle_err_mid">#97979B</color>
+    <color name="color_tittle_err_bot">#6534FF</color>
+    <color name="color_upper_user_info">#F7F7F8</color>
+    <color name="color_swiper_progress_bar">#6534FF</color>
+    <color name="color_btn_toolbar_cancel">#6534FF</color>
+    <color name="line_year_text">#C3C3C6</color>
+    <color name="snackbar_err">#F44336</color>
+    <color name="snackbar_loading">#6534FF</color>
+
+</resources>

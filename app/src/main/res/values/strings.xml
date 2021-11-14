@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">KODEtestTeask</string>
+    <string name="tittle_error_upper">Какой-то сверхразум все сломал</string>
+    <string name="tittle_error_middle">Постараемся быстро починить</string>
+    <string name="tittle_error_bottom">Попробовать снова</string>
+    <string name="age_first">лет</string>
+    <string name="age_second">год</string>
+    <string name="age_third">года</string>
+    <string name="hint_find">Введи имя, тег, почту...</string>
+    <string name="btn_toolbar_cancel">Отмена</string>
+    <string name="tittle_upper_not_find_user">Мы никого не нашли</string>
+    <string name="tittle_bottom_not_find_user">Попробуй скорректировать запрос</string>
+    <string name="sort_tittle">Сортировка</string>
+    <string name="rb_button_alphabet">По алфавиту</string>
+    <string name="rb_button_birthday">По дню рождения</string>
+    <string name="smackbar_err">Не могу обновить данные. Что-то пошло не так</string>
+    <string name="smackbar_loading">Секундочку, гружусь...</string>
+
+
+</resources>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph_main"
+    app:startDestination="@id/fragmentUsers">
+
+    <fragment
+        android:id="@+id/fragmentUsers"
+        android:name="com.glushko.kodetestteask.presentation_layer.ui.users_main_screen.FragmentUsers"
+        android:label="FragmentUsers" >
+        <action
+            android:id="@+id/action_fragmentUsers_to_fragmentError"
+            app:destination="@id/fragmentError" />
+        <action
+            android:id="@+id/action_fragmentUsers_to_fragmentUserInfo"
+            app:destination="@id/fragmentUserInfo" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentError"
+        android:name="com.glushko.kodetestteask.presentation_layer.ui.error_screen.FragmentError"
+        android:label="FragmentError" >
+        <action
+            android:id="@+id/action_fragmentError_to_fragmentUsers"
+            app:destination="@id/fragmentUsers" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentUserInfo"
+        android:name="com.glushko.kodetestteask.presentation_layer.ui.user_detail_screen.FragmentUserInfo"
+        android:label="FragmentUserInfo" >
+        <action
+            android:id="@+id/action_fragmentUserInfo_to_fragmentUsers"
+            app:destination="@id/fragmentUsers" />
+    </fragment>
+</navigation>

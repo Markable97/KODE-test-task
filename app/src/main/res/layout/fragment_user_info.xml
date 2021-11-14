@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/header_user_info"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/color_upper_user_info"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/btn_back_user_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25.87dp"
+            android:layout_marginTop="20.75dp"
+            android:background="@android:color/transparent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_back_toolbar" />
+
+        <ImageView
+            android:id="@+id/avatar_user_info"
+            android:layout_width="104dp"
+            android:layout_height="104dp"
+            android:layout_marginTop="28dp"
+            android:background="@drawable/round_image_64"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/name_user_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:textColor="@color/color_user_name"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/avatar_user_info"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintEnd_toStartOf="@id/tag_user_info"
+            tools:text="Алиса Иванова" />
+
+        <TextView
+            android:id="@+id/tag_user_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            app:layout_constraintBottom_toBottomOf="@id/name_user_info"
+            app:layout_constraintStart_toEndOf="@id/name_user_info"
+            app:layout_constraintTop_toTopOf="@id/name_user_info"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="al" />
+        <TextView
+            android:id="@+id/department_user_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="24dp"
+            tools:text="Designer"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/name_user_info"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/header_user_info"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+
+            <ImageButton
+                android:id="@+id/btn_favorite_user_info"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.1"
+                android:layout_marginTop="18dp"
+                android:layout_marginBottom="22dp"
+                android:background="@android:color/transparent"
+                app:srcCompat="@drawable/ic_star" />
+            <TextView
+                android:id="@+id/birthday_user_info"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:layout_marginBottom="22dp"
+                android:layout_weight="0.7"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                tools:text="5 июня 1996"/>
+
+            <TextView
+                android:id="@+id/age_user_info"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:layout_marginBottom="22dp"
+                android:layout_marginEnd="20dp"
+                android:layout_weight="0.2"
+                android:textColor="@color/color_user_age"
+                android:textAlignment="textEnd"
+                android:textSize="16sp"
+                tools:text="24 года" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/btn_phone_user_info"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="?attr/selectableItemBackground"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.1"
+                android:layout_gravity="center_vertical"
+                android:background="@android:color/transparent"
+                app:srcCompat="@drawable/ic_phone" />
+            <TextView
+                android:id="@+id/number_user_info"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.9"
+                android:layout_gravity="center_vertical"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                tools:text="+7 (999) 900 90 90"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
