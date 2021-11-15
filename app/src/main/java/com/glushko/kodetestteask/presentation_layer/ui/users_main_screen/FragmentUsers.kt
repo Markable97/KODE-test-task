@@ -115,7 +115,7 @@ class FragmentUsers: Fragment(R.layout.fragment_users_list) {
             view.hideKeyboard()
         }
 
-        model.liveDataUsers.observe(this, Observer {
+        model.liveDataUsers.observe(viewLifecycleOwner, Observer {
             snackbar.dismiss()
             if (it.success){
                 _adapter.clearList()
@@ -127,7 +127,7 @@ class FragmentUsers: Fragment(R.layout.fragment_users_list) {
             }
         })
 
-        model.liveDataUserSearch.observe(this, Observer {
+        model.liveDataUserSearch.observe(viewLifecycleOwner, Observer {
             _adapter.clearList()
             if(it.items.isNotEmpty()){
                 hideViews()
@@ -137,7 +137,7 @@ class FragmentUsers: Fragment(R.layout.fragment_users_list) {
             _adapter.setListNew(it.items.toMutableList(), 0, it.items.size)
         })
 
-        model.liveDataSorted.observe(this, Observer {
+        model.liveDataSorted.observe(viewLifecycleOwner, Observer {
             if (it == UserViewModel.TYPE_SORT_BIRTHDAY){
                 btnSort.setImageResource(R.drawable.ic_sort_activate)
             }else{
